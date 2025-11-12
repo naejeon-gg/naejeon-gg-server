@@ -1,4 +1,4 @@
-package com.ganggun.scrim_com;
+package com.chlwkddn.scrim_com;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

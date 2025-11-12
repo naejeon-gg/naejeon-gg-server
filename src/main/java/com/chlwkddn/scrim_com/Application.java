@@ -1,4 +1,4 @@
-package com.ganggun.scrim_com;
+package com.chlwkddn.scrim_com;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
