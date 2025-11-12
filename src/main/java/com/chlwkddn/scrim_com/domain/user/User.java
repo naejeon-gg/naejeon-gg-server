@@ -19,8 +19,21 @@ public class User {
     private String puuid;
 
     @Column
-    private String lastName;
+    private String name;
+    @Column
+    private String tag;
 
     @Column
-    private String firstName;
+    private String topRank;
+    @Column
+    private String currentRank;
+
+    @Column
+    private String mainRole;
+
+    @Column
+    private String subRole;
+
+    @Column
+    private Long review;
 }
