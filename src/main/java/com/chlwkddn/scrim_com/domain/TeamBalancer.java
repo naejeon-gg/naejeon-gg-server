@@ -102,5 +102,7 @@ public class TeamBalancer {
         System.out.println("\n===== 팀 B =====");
         System.out.println(teamB);
         System.out.println("평균 평점: " + teamB.getAverageRating());
+
+        //todo 매번 랜덤으로? 팀바꾸기 기능 추가
     }
 }
