@@ -1,3 +1,25 @@
 riot:
   api:
     key: ${RGAPi}
+spring:
+  datasource:
+    url: ${MY_SQL_URL}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${MY_SQL_USER}
+    password: ${MY_SQL_PW}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+springdoc:
+  api-docs:
+    enabled: true
+    version: openapi_3_0
+    path: /v3/api-docs
+  swagger-ui:
+    operationsSorter: method
+    path: /swagger-ui.html
