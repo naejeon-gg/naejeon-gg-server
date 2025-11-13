@@ -1,4 +1,4 @@
-package com.chlwkddn.scrim_com.domain.user;
+package com.chlwkddn.scrim_com.domain.user.model;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,0 +1,3 @@
+riot:
+  api:
+    key: ${RGAPi}
