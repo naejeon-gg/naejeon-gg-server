@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
@@ -18,24 +19,35 @@ public class UserService {
 
     public String login( LoginReq loginReq , HttpServletResponse response) {
 
-        RiotPuuidReq result =webClient.get()
+        String gameName = loginReq.gameName();
+        String tagLine = loginReq.tagLine();
+
+        RiotPuuidReq result = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}")
                         .queryParam("api_key", riotProperties.getKey())
-                        .build(loginReq.gameName(), loginReq.tagLine()))
+                        .build(gameName, tagLine)) // WebClient가 알아서 인코딩
                 .retrieve()
                 .onStatus(
-                        HttpStatusCode::is4xxClientError, // 클라이언트 오류 (400번대)
+                        HttpStatusCode::is4xxClientError,
                         clientResponse -> clientResponse.bodyToMono(String.class)
-                                .map(body -> new RuntimeException("클라이언트 오류: " + body))
+                                .flatMap(errorBody -> {
+                                    System.out.println("응답 본문: " + errorBody);
+                                    return Mono.error(new RuntimeException("클라 오류: " + errorBody));
+                                })
                 )
                 .onStatus(
-                        HttpStatusCode::is5xxServerError, // 서버 오류 (500번대)
+                        HttpStatusCode::is5xxServerError,
                         clientResponse -> clientResponse.bodyToMono(String.class)
-                                .map(body -> new RuntimeException("서버 오류: " + body))
+                                .flatMap(errorBody -> {
+                                    System.out.println("응답 본문: " + errorBody);
+                                    return Mono.error(new RuntimeException("서버 오류: " + errorBody));
+                                })
                 )
                 .bodyToMono(RiotPuuidReq.class)
                 .block();
+
+
 
         if (result==null){
             throw new RuntimeException("npe");
