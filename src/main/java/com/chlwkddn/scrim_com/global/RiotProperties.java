@@ -1,4 +1,4 @@
-package com.chlwkddn.scrim_com.globle;
+package com.chlwkddn.scrim_com.global;
 
 import lombok.Getter;
 import lombok.Setter;

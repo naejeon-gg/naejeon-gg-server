@@ -2,7 +2,7 @@ package com.chlwkddn.scrim_com.domain.user.service;
 
 import com.chlwkddn.scrim_com.domain.user.dto.req.LoginReq;
 import com.chlwkddn.scrim_com.domain.user.dto.req.RiotPuuidReq;
-import com.chlwkddn.scrim_com.globle.RiotProperties;
+import com.chlwkddn.scrim_com.global.RiotProperties;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
