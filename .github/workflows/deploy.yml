@@ -51,9 +51,10 @@ jobs:
           username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            cd /home/ubuntu/app
-            sudo docker rm -f $(docker ps -qa) || true
+            mkdir -p /home/${{ secrets.USER_NAME }}/app
+            cd /home/${{ secrets.USER_NAME }}/app
+            sudo docker rm -f $(sudo docker ps -qa) || true
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
-            sudo docker-compose up -d
+            sudo docker compose up -d
             sudo docker image prune -f
 
