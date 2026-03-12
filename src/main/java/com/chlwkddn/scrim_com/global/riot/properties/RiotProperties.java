@@ -1,4 +1,4 @@
-package com.chlwkddn.scrim_com.global;
+package com.chlwkddn.scrim_com.global.riot.properties;
 
 import lombok.Getter;
 import lombok.Setter;

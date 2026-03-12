@@ -65,7 +65,7 @@ public class TeamBalancer {
         Team teamA = new Team();
         Team teamB = new Team();
 
-        // 1️⃣ 포지션별로 번갈아가며 배분
+        // 포지션별로 번갈아가며 배분
         for (String pos : List.of("TOP", "JUNGLE", "MID", "ADC", "SUPPORT")) {
             List<Player> group = grouped.getOrDefault(pos, new ArrayList<>());
             for (int i = 0; i < group.size(); i++) {
@@ -77,7 +77,7 @@ public class TeamBalancer {
             }
         }
 
-        // 2️⃣ 남은 인원 처리 (부포지션 기반)
+        //  남은 인원 처리 (부포지션 기반)
         List<Player> unassigned = new ArrayList<>(players);
         unassigned.removeAll(teamA.members);
         unassigned.removeAll(teamB.members);
