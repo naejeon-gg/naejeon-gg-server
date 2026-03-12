@@ -5,21 +5,18 @@ import com.chlwkddn.scrim_com.domain.user.service.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class UserController {
-
     private final UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
     @PostMapping("/login")
-    public String login(@RequestBody LoginReq loginReq , HttpServletResponse response) {
-        return userService.login(loginReq,response);
+    public String login(@RequestBody LoginReq loginReq, HttpServletResponse response) {
+        return userService.login(loginReq, response);
     }
 //
 //    @GetMapping("/check")

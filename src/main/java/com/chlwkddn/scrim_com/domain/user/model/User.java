@@ -10,30 +10,30 @@ import lombok.*;
 @Builder
 @Getter
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(unique = true, nullable = false)
     private String puuid;
 
-    @Column
+    @Column(nullable = false)
     private String name;
-    @Column
+
+    @Column(nullable = false)
     private String tag;
 
-    @Column
-    private String topRank;
-    @Column
-    private String currentRank;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Rank topRank;
 
-    @Column
-    private String mainRole;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Rank currentRank;
 
-    @Column
-    private String subRole;
+    @Column(nullable = false)
+    private Position mainPosition;
 
-    @Column
-    private Long review;
+    @Column(nullable = false)
+    private Position subPosition;
 }
